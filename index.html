@@ -163,9 +163,16 @@ button {
 
 <script>
 function startGame() {
-  document.getElementById("bgm").play();
-  next(2);
+  const bgm = document.getElementById("bgm");
+  const voice = document.getElementById("voice");
 
+  bgm.volume = 0.25;   // softer background
+  voice.volume = 1.0; // loud, clear voice
+
+  bgm.play();setTimeout(() => {
+  bgm.volume = 0.1; // dip music when voice speaks
+}, 1000);
+  next(2);
   setTimeout(() => {
     document.getElementById("girl").style.right = "40%";
     document.getElementById("bubble").style.display = "block";
